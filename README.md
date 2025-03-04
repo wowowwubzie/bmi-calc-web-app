@@ -37,7 +37,7 @@ Before running this project, ensure you have the following installed:
 project-directory/
 │── bmiapp.py          # Main Flask application file
 │── templates/
-│   └── project1.html  # HTML file for the BMI calculator
+│   └── bmiweb.html  # HTML file for the BMI calculator
 │── static/
 │   └── styles.css     # CSS file for styling
 │── README.md          # This documentation file
