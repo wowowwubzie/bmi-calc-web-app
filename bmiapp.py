@@ -26,7 +26,7 @@ def index():
         except ValueError:
             status = "Invalid input"
 
-    return render_template("project1.html", bmi=bmi, status=status, weight=weight, height=height)
+    return render_template("bmiweb.html", bmi=bmi, status=status, weight=weight, height=height)
 
 if __name__ == '__main__':
     app.run(debug=True)
