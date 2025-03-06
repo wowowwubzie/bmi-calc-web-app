@@ -110,3 +110,6 @@ button:hover {
     align-items: flex-start; 
     padding-left: 20px; 
 }
+.advice {
+    font-style: italic;
+}
