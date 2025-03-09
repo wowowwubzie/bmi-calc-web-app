@@ -29,11 +29,16 @@
             <button type="submit">Calculate BMI</button>
         </form>
         <div class="bmi-output">
-            {% if bmi is not none %}
-            <h2>Your BMI: {{ bmi }}</h2>
-            <h3>Status: {{ status }}</h3>
-            <p class="advice">Health Advice: {{ advice }}</p>
-            {% endif %}
+            <h2>Health Assessment</h2>
+            <div class= "assesment"> 
+                {% if bmi is not none %}
+                    <h3>Your BMI: <span id="bmi-value">{{ bmi }}</span></h3></h2>
+                    <h4>Status: <span id="bmi-status">{{ status }}</span></h3>
+                    <p class="advice"><strong>Health Advice: </strong> <span id="bmi-advice">{{ advice }}</span></p>
+                {% else %}
+                    <p id="bmi-placeholder">Enter your details and click "Calculate" to see your health assessment.</p>
+                {% endif %}
+            </div>
         </div>
 
         

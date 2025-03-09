@@ -2,6 +2,17 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+def get_health_advice(bmi):
+    """Provides health advice based on BMI value"""
+    if bmi < 18.5:
+        return "Consider increasing your calorie intake with nutrient-rich foods."
+    elif 18.5 <= bmi < 24.9:
+        return "Maintain a balanced diet and regular physical activity to stay healthy."
+    elif 25 <= bmi < 29.9:
+        return "Consider incorporating a healthier diet and more exercise into your routine."
+    else:
+        return "It’s recommended to consult a healthcare provider for personalized guidance."
+    
 @app.route('/', methods=['GET', 'POST'])
 def index():
     bmi = None
@@ -9,7 +20,6 @@ def index():
     weight = None
     height = None
     advice= None
-
     if request.method == 'POST':
         try: 
             weight = float(request.form.get("weight", 0))
@@ -18,16 +28,14 @@ def index():
                 bmi = round(weight / (height ** 2), 2)
                 if bmi < 18.5:
                     status = "Underweight"
-                    advice = "You may need to eat more calorie-dense foods and consult a nutritionist."
                 elif 18.5 <= bmi < 24.9:
                     status = "Normal weight"
-                    advice = "Maintain a balanced diet and regular physical activity to stay healthy."
                 elif 25 <= bmi < 29.9:
                     status = "Overweight"
-                    advice = "Consider incorporating a healthier diet and more exercise into your routine."
                 else:
-                    status = "Obese"
-                    advice = "Seek professional medical advice for a personalized weight management plan."
+                    status = "Obese"     
+                advice = get_health_advice(bmi)
+
         except ValueError:
             status = "Invalid input"
 
